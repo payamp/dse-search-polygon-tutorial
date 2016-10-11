@@ -7,7 +7,7 @@ At a high level, the geospatial data is stored in Cassandra as **text** in [WKT 
 By the end of this, I will be demonstrating how to do a Polygonal Search using the following geospatial predicates:
 
 * Intersects
-	* If the search geometry **overlaps any any part** of the indexed/document geometry it is considered a match
+	* If the search geometry **overlaps any part** of the indexed/document geometry it is considered a match
 
 * IsWithin
 	* If the search geometry **completely encapsulates** the indexed/document geometry it is considered a match
@@ -120,7 +120,7 @@ cqlsh> COPY geo.states (state, fips, geo, pop) FROM 'states.csv';
 ```
 
 
-## solr_query examples with Intersects Polygon
+## solr_query examples
 
 [Using this site](https://arthur-e.github.io/Wicket/sandbox-gmaps3.html) to create the WKT polygon (directly below) to use with the three predicates (Intersects, IsWithin, and IsDisjointTo).
 
