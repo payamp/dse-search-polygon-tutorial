@@ -1,5 +1,7 @@
 ## DSE Spatial Search 
 
+Built using DSE 5.0.3
+
 This tutorial is intended to show how to index geospatial shapes such as Polygons and MultiPolygons in Datastax Enterprise Search and subsequently query them. I am using data about States in the United States because it is a smaller data set which will make it easier to understand the effects of the geospatial predicates described below.
 
 At a high level, the geospatial data is stored in Cassandra as **text** in [WKT (Well Known Text)] (https://en.wikipedia.org/wiki/Well-known_text) format. We configure the Search Schema to set the field to be of **solr.SpatialRecursivePrefixTreeFieldType** type which supports Polygons  and MultiPolygons. It supports other types as well, but in the provided example data, most states are describable as Polygons, and others such as Hawaii, Alaska, need a MultiPolygon to describe their geometric shape. 
@@ -124,6 +126,7 @@ cqlsh> COPY geo.states (state, fips, geo, pop) FROM 'states.csv';
 
 [Using this site](https://arthur-e.github.io/Wicket/sandbox-gmaps3.html) to create the WKT polygon (directly below) to use with the three predicates (Intersects, IsWithin, and IsDisjointTo).
 
+I am using the following POLYGON for all 3 predicates below:
 ```
 POLYGON((-125.419921875 49.98478613540782,-116.279296875 49.35912268752875,-115.927734375 42.72078596277834,-113.291015625 42.429538632268276,-112.8515625 37.06175259706908,-113.5546875 31.92186141844726,-123.22265625 30.946991356457197,-127.265625 38.93163900447185,-125.419921875 49.98478613540782))
 ```
